@@ -15,3 +15,14 @@ import anyModule from 'protocol:anyWhere'
 const build = { "libv8.so": v8, "my.so": my, "something.so": anySymbol, anyModule };
 // will when executed with rollup plugin c produce the files as bundel so that you can reuse that or write it out to disk. 
 ```
+
+
+## Usage
+
+```js
+import RollupPluginC from '@rollup/plugin-c';
+
+const rollupGcc = RollupPluginC({ C: "gcc" }) // linkerflags etc if they can not get guessed by eg RollupPluginC.resolve('.cc .c .S Makefile .h')
+
+const build = rollupGcc({}); // Returns references to the files as also the binary files it self to write them out if you supply a write Task directly it will write them out to disk as Stream as a Task is a Stream.
+```
